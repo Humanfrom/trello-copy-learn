@@ -1,4 +1,4 @@
-import axios from 'axios';
+/*import axios from 'axios';
 import {setRepos} from './../../reducers/reposReducer.js'
 
 export const getRepos = (searchQuery = "stars:%3E1") => {
@@ -7,3 +7,4 @@ export const getRepos = (searchQuery = "stars:%3E1") => {
     dispatch(setRepos(response.data))
   }
 }
+*/

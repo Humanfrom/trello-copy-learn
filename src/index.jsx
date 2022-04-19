@@ -1,8 +1,8 @@
 import "./index.less"
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx'
-import {store} from "./reducers/index.js"
+import App from './App.jsx'
+import {store} from "./components/reducers"
 import {Provider} from "react-redux"
 
 ReactDOM.render(
