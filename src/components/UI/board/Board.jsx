@@ -31,11 +31,12 @@ const Board = ({board}) => {
           </ul>
       </div>
       <div className="board-buttons">
-        <WideButton style={{width:200}} onClick={() => selectBoard(board.id)}>Изменить</WideButton>
+        <WideButton style={{width:200}} onClick={() => selectBoard(board.id)}>
+          Изменить
+        </WideButton>
         <WideButton style={{width:55}} onClick={() => removeThisBoard(board.id)}>
-          <span class="material-icons">
-            close
-          </span></WideButton>
+          <span class="material-icons">close</span>
+        </WideButton>
       </div>
     </div>
   );

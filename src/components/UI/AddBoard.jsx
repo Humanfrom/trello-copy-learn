@@ -17,10 +17,7 @@ const AddBoard = () => {
   return (
     <div className='board add-board'>
       <div className='board-title'>
-        <h2>ADD</h2>
-      </div>
-      <div className='input-container'>
-        <AddInput type='text' placeholder="Введите название..." value={title} onChange={e => setTitle(e.target.value)} required/>
+        <AddInput type='text' placeholder="БЕЗ ИМЕНИ" value={title} onChange={e => setTitle(e.target.value)} required/>
       </div>
       <div className='button-container'>
         <RoundAddButton onClick={() => addNewBoard()}></RoundAddButton>

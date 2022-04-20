@@ -1,6 +1,7 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import mainLogo from "../../../img/logo.png";
+import WideButton from "../wideButton/WideButton.jsx"
 import './navbar.less'
 
 
@@ -10,8 +11,12 @@ const Navbar = () => {
   return (
     <div className='navbar'>
       <div className='navbar-buttons'>
-         <Link to='/'><button>Главная</button></Link>
-        <button onClick={() => navigate(-1)}>Назад</button>
+        <WideButton onClick={() => navigate('/')}>
+        <span class="material-icons">home</span>
+        </WideButton>
+        <WideButton onClick={() => navigate(-1)}>
+          <span class="material-icons">arrow_back</span>
+        </WideButton>
       </div>
       <div className='navbar-title'>
         <img src={mainLogo} />
