@@ -3,7 +3,6 @@ import './board.less'
 import {useDispatch, useSelector} from "react-redux";
 import {removeBoard} from '../../reducers/reducer.js'
 import WideButton from "../wideButton/WideButton.jsx"
-import {Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Board = ({board}) => {
@@ -35,7 +34,7 @@ const Board = ({board}) => {
           Изменить
         </WideButton>
         <WideButton style={{width:55}} onClick={() => removeThisBoard(board.id)}>
-          <span class="material-icons">close</span>
+          <span className="material-icons">close</span>
         </WideButton>
       </div>
     </div>

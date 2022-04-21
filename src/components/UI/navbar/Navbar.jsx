@@ -12,10 +12,10 @@ const Navbar = () => {
     <div className='navbar'>
       <div className='navbar-buttons'>
         <WideButton onClick={() => navigate('/')}>
-        <span class="material-icons">home</span>
+        <span className="material-icons">home</span>
         </WideButton>
         <WideButton onClick={() => navigate(-1)}>
-          <span class="material-icons">arrow_back</span>
+          <span className="material-icons">arrow_back</span>
         </WideButton>
       </div>
       <div className='navbar-title'>

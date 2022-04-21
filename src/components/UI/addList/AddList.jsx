@@ -1,18 +1,19 @@
+import {addList} from '../../reducers/reducer.js'
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {addBoard} from '../reducers/reducer.js'
-import RoundAddButton from './roundAddButton/RoundAddButton.jsx'
-import AddInput from './addInput/AddInput.jsx';
-import './addboard.less'
+import RoundAddButton from '../roundAddButton/RoundAddButton.jsx'
+import AddInput from '../addInput/AddInput.jsx';
+//import './addboard.less'
 import {v4} from 'uuid'
 
-const AddBoard = () => {
+const AddList  = ({currentBoardId}) => {
+
   const dispatch = useDispatch();
   const boards = useSelector(state => state.data.boards)
   const [title,setTitle] = useState('');
 
-  function addNewBoard(){
-    dispatch(addBoard([...boards, {"id": v4(), "title":title,"lists":[]}]))
+  function addNewList(){
+    dispatch(addList({'id': currentBoardId, 'value': {"id": v4(), "title": title, "tasks": []}}))
   }
 
   return (
@@ -21,10 +22,10 @@ const AddBoard = () => {
         <AddInput type='text' placeholder="БЕЗ ИМЕНИ" value={title} onChange={e => setTitle(e.target.value)} required/>
       </div>
       <div className='button-container'>
-        <RoundAddButton onClick={() => addNewBoard()}></RoundAddButton>
+        <RoundAddButton onClick={() => addNewList()}></RoundAddButton>
       </div>
     </div>
   );
 }
 
-export default AddBoard;
+export default AddList;
