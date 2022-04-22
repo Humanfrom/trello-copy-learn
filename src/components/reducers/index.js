@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
 import {createStore, applyMiddleware} from "redux"
-import {boardsReducer} from './reducer.js'
+import {boardsReducer} from './boardsReducer.js'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk"
 

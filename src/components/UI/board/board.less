@@ -23,8 +23,9 @@
     justify-content: flex-start;
     color: white;
     position: relative;
+  }
 
-    :after {
+  .board-title::after {
        content: "";
        position: absolute;
        left: 0;
@@ -38,8 +39,6 @@
        z-index: 0;
        transition: .6s cubic-bezier(.6, .01, 0, 1);
     }
-
-  }
 
   .board-container{
     display: flex;

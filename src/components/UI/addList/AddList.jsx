@@ -1,4 +1,4 @@
-import {addList} from '../../reducers/reducer.js'
+import {addList} from '../../reducers/boardsReducer.js'
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import RoundAddButton from '../roundAddButton/RoundAddButton.jsx'
@@ -9,11 +9,11 @@ import {v4} from 'uuid'
 const AddList  = ({currentBoardId}) => {
 
   const dispatch = useDispatch();
-  const boards = useSelector(state => state.data.boards)
+  const boards = useSelector(state => state.data)
   const [title,setTitle] = useState('');
 
   function addNewList(){
-    dispatch(addList({'id': currentBoardId, 'value': {"id": v4(), "title": title, "tasks": []}}))
+    dispatch(addList({"id": v4(), "title": title, "tasks": []},currentBoardId))
   }
 
   return (

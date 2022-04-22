@@ -1,7 +1,6 @@
 import React from 'react';
 import './app.less';
 import {useDispatch, useSelector} from "react-redux";
-import {setCount} from "./components/reducers/reducer.js"
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Main from "./components/pages/main/Main.jsx";
 import CurrentBoard from "./components/pages/currentboard/CurrentBoard.jsx";

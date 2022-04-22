@@ -11,7 +11,7 @@ const CurrentBoard = (props) => {
   const currentBoard = getCurrentBoard(id);
 
   function getCurrentBoard(currentId){
-    const boards = useSelector(state => state.data.boards)
+    const boards = useSelector(state => state.data)
     return (boards.filter(elem => elem.id == currentId))[0]
   }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {addBoard} from '../reducers/reducer.js'
+import {addBoard} from '../reducers/boardsReducer.js'
 import RoundAddButton from './roundAddButton/RoundAddButton.jsx'
 import AddInput from './addInput/AddInput.jsx';
 import './addboard.less'
@@ -8,11 +8,11 @@ import {v4} from 'uuid'
 
 const AddBoard = () => {
   const dispatch = useDispatch();
-  const boards = useSelector(state => state.data.boards)
+  const boards = useSelector(state => state.data)
   const [title,setTitle] = useState('');
 
   function addNewBoard(){
-    dispatch(addBoard([...boards, {"id": v4(), "title":title,"lists":[]}]))
+    dispatch(addBoard({"id": v4(), "title":title,"lists":[]}))
   }
 
   return (

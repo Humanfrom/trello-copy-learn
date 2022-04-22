@@ -7,7 +7,7 @@ import AddBoard from "../../UI/AddBoard.jsx"
 
 const Main = () => {
   const dispatch = useDispatch();
-  const boards = useSelector(state => state.data.boards)
+  const boards = useSelector(state => state.data)
 
   return (
   <div>
