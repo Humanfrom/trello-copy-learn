@@ -17,21 +17,21 @@ export function boardsReducer(state = defaultState, action){
       return state.filter(b => b.id !== action.payload)
     case C.UPDATE_BOARD:
       return state.map(elem => elem.id === action.id ? {...elem, title:action.payload} : elem)
+    case C.MOVE_BOARD:
+      const {destination, source, draggableId} = action.payload;
+      const newBoards = state.filter((b,i) => i !== source.index);
+      newBoards.splice(destination.index,0,state[source.index]);
+      console.log(newBoards)
+      return newBoards
     case C.ADD_LIST:
       return state.map(elem => elem.id === action.id ? listsReducer(elem,action) : elem)
     case C.REMOVE_LIST:
         return state.map(board => ({...board , lists: board.lists.filter(list => list.id !== action.payload)}))
     case C.UPDATE_LIST:
         return state.map(board => ({...board,
-          lists: board.lists.map(list => list.id === action.id ? {...list, title: action.title} : list)}))
-    case C.ADD_TASK:
-        return state.map(elem => listsReducer(elem,action))
-    case C.REMOVE_TASK:
-        return state.map(elem => listsReducer(elem,action))
-    case C.UPDATE_TASK:
-        return state.map(elem => listsReducer(elem,action))
+          lists: board.lists.map(list => (list.id === action.id ? {...list, title: action.payload} : list))}))
     default:
-      return state
+      return state.map(elem => listsReducer(elem,action))
   }
 }
 
@@ -51,6 +51,11 @@ export const updateBoard = (title, boardId) => ({
     id: boardId
 })
 
+export const moveBoard = (result) => ({
+    type: C.MOVE_BOARD,
+    payload: result
+})
+
 export const addList = (object, boardId) => ({
     type: C.ADD_LIST,
     payload: object,
@@ -68,6 +73,12 @@ export const updateList = (title, listId) => ({
     id: listId
 })
 
+export const moveList = (result) => ({
+    type: C.UPDATE_TASK,
+    payload: result
+})
+
+
 export const addTask = (task, listId) => ({
     type: C.ADD_TASK,
     payload: task,
@@ -82,4 +93,9 @@ export const removeTask = (id) => ({
 export const updateTask = (task) => ({
     type: C.UPDATE_TASK,
     payload: task
+})
+
+export const moveTask = (result) => ({
+    type: C.UPDATE_TASK,
+    payload: result
 })

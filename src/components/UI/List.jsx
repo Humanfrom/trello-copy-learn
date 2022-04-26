@@ -4,9 +4,13 @@ import {v4} from 'uuid';
 import {useDispatch, useSelector} from "react-redux";
 import WideButton from "./wideButton/WideButton.jsx"
 import AddInput from "./addInput/AddInput.jsx"
-import {addTask, removeList, updateList} from '../reducers/boardsReducer.js'
+import {addTask, removeList, updateList} from '../reducers/boardsReducer.js';
+import DroppableContainer from './dproppableContainer.jsx';
+import DraggableContainer from './draggableContainer.jsx';
+import './list.less';
 
 const List = ({tasks, title, id}) => {
+
   const dispatch = useDispatch();
   const [taskTitle,setTaskTitle] = useState('');
   const [listTitle,setListTitle] = useState(title);
@@ -26,17 +30,27 @@ const List = ({tasks, title, id}) => {
 
 
   return (
-    <div className="board">
+    <div className="list">
 
-      <div className='board-title'>
+      <div className='list-title'>
         <AddInput value={listTitle} onChange={e => setListTitle(e.target.value)} onBlur={updateThisList}/>
       </div>
 
-        <ul style={{'padding': 0, 'listStyleType': 'none'}}>
-          {tasks.map(task => <Task key={task.id} id={task.id} title={task.text} checked={task.checked}/>)}
-        </ul>
+        <div style={{'padding': 0, 'listStyleType': 'none'}}>
+          <DroppableContainer
+            droppableId="all-tasks"
+            type="tasks"
+            listClass='flex-column'
+            >
+                {tasks.map((task, index) => (
+                    <DraggableContainer key={'drag-' + task.id} draggableId={task.id} index={index}>
+                          <Task key={task.id} id={task.id} title={task.text} checked={task.checked}/>
+                    </DraggableContainer>
+                  ))}
+          </DroppableContainer>
+        </div>
 
-      <div className="board-buttons">
+      <div className="list-buttons">
         <AddInput type='text' placeholder="БЕЗ ИМЕНИ" value={taskTitle} onChange={e => setTaskTitle(e.target.value)} required/>
 
         <WideButton style={{width:200}} onClick={() => addNewTask()}>Добавить</WideButton>

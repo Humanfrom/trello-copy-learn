@@ -13,6 +13,7 @@ const AddBoard = () => {
 
   function addNewBoard(){
     dispatch(addBoard({"id": v4(), "title":title,"lists":[]}))
+    setTitle('');
   }
 
   return (

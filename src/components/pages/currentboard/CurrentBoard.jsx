@@ -3,6 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import List from "../../UI/List.jsx";
 import AddList from "../../UI/addList/AddList.jsx";
+import {DragDropContext} from 'react-beautiful-dnd'
+import {moveList, moveTask} from './../../reducers/boardsReducer.js'
+import DroppableContainer from '../../UI/dproppableContainer.jsx'
+import DraggableContainer from '../../UI/draggableContainer.jsx'
 
 const CurrentBoard = (props) => {
   const dispatch = useDispatch();
@@ -15,12 +19,42 @@ const CurrentBoard = (props) => {
     return (boards.filter(elem => elem.id == currentId))[0]
   }
 
+  const onDragEnd = (result) => {
+    const {destination, source, type} = result;
+
+    if(!destination) return;
+    if(destination.droppableId === source.droppableId &&
+      destination.index === source.index) return;
+
+    if(type === 'lists'){
+      dispatch(moveList(result))
+    }
+
+    if(type === 'tasks'){
+      dispatch(moveTask(result))
+    }
+
+  }
+
   return (
+    <DragDropContext onDragEnd={onDragEnd}>
     <div className='select-board'>
-      <h1>{currentBoard.title}</h1>
-      {currentBoard.lists.map(elem => <List key={elem.id} title={elem.title} tasks={elem.tasks} id={elem.id}/>)}
+        <h1>{currentBoard.title}</h1>
+        <DroppableContainer
+          droppableId="all-lists"
+          direction='horizontal'
+          type="lists"
+          listClass='flex-row'
+          >
+              {currentBoard.lists.map((item, index) => (
+                <DraggableContainer key={'drag-' + item.id} draggableId={item.id} index={index}>
+                    <List key={item.id} title={item.title} tasks={item.tasks} id={item.id}/>
+                    </DraggableContainer>
+                  ))}
+          </DroppableContainer>
       <AddList currentBoardId={currentBoard.id} />
     </div>
+    </DragDropContext>
   );
 }
 

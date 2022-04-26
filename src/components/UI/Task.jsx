@@ -25,12 +25,12 @@ const Task = ({title, id, checked}) => {
         </span>
       </button>
 
-      <li>
+      <div style={{'display':'flex'}}>
         <AddInput
           value={taskText}
           onChange={e => setTaskText(e.target.value)}
           onBlur={e => updateThisTask(checked, e.target.value)}/>
-      </li>
+      </div>
 
       <button onClick={removeThisTask}>
         <span className="material-icons">close</span>
