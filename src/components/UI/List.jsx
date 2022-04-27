@@ -36,9 +36,9 @@ const List = ({tasks, title, id}) => {
         <AddInput value={listTitle} onChange={e => setListTitle(e.target.value)} onBlur={updateThisList}/>
       </div>
 
-        <div style={{'padding': 0, 'listStyleType': 'none'}}>
+
           <DroppableContainer
-            droppableId="all-tasks"
+            droppableId={id}
             type="tasks"
             listClass='flex-column'
             >
@@ -48,7 +48,7 @@ const List = ({tasks, title, id}) => {
                     </DraggableContainer>
                   ))}
           </DroppableContainer>
-        </div>
+        
 
       <div className="list-buttons">
         <AddInput type='text' placeholder="БЕЗ ИМЕНИ" value={taskTitle} onChange={e => setTaskTitle(e.target.value)} required/>

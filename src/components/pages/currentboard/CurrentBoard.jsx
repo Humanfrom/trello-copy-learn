@@ -15,7 +15,7 @@ const CurrentBoard = (props) => {
   const currentBoard = getCurrentBoard(id);
 
   function getCurrentBoard(currentId){
-    const boards = useSelector(state => state.data)
+    const boards = useSelector(state => state)
     return (boards.filter(elem => elem.id == currentId))[0]
   }
 
@@ -27,11 +27,11 @@ const CurrentBoard = (props) => {
       destination.index === source.index) return;
 
     if(type === 'lists'){
-      dispatch(moveList(result))
+      dispatch(moveList(result, currentBoard.id))
     }
 
     if(type === 'tasks'){
-      dispatch(moveTask(result))
+      dispatch(moveTask(result, currentBoard.id))
     }
 
   }

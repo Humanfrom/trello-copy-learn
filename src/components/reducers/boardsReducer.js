@@ -1,13 +1,8 @@
-import data from '../../data.js';
 import C from '../../constants';
 import {listsReducer} from './listsReducer.js';
 
-
-const defaultState = [
-  ...data.boards
-];
-
-export function boardsReducer(state = defaultState, action){
+export function boardsReducer(state = [], action){
+  console.log(state)
   switch (action.type) {
     case C.ADD_BOARD:
       return [ ...state,
@@ -21,15 +16,7 @@ export function boardsReducer(state = defaultState, action){
       const {destination, source, draggableId} = action.payload;
       const newBoards = state.filter((b,i) => i !== source.index);
       newBoards.splice(destination.index,0,state[source.index]);
-      console.log(newBoards)
       return newBoards
-    case C.ADD_LIST:
-      return state.map(elem => elem.id === action.id ? listsReducer(elem,action) : elem)
-    case C.REMOVE_LIST:
-        return state.map(board => ({...board , lists: board.lists.filter(list => list.id !== action.payload)}))
-    case C.UPDATE_LIST:
-        return state.map(board => ({...board,
-          lists: board.lists.map(list => (list.id === action.id ? {...list, title: action.payload} : list))}))
     default:
       return state.map(elem => listsReducer(elem,action))
   }
@@ -73,9 +60,10 @@ export const updateList = (title, listId) => ({
     id: listId
 })
 
-export const moveList = (result) => ({
-    type: C.UPDATE_TASK,
-    payload: result
+export const moveList = (result, boardId) => ({
+    type: C.MOVE_LIST,
+    payload: result,
+    id: boardId
 })
 
 
@@ -95,7 +83,8 @@ export const updateTask = (task) => ({
     payload: task
 })
 
-export const moveTask = (result) => ({
-    type: C.UPDATE_TASK,
-    payload: result
+export const moveTask = (result, boardId) => ({
+    type: C.MOVE_TASK,
+    payload: result,
+    id: boardId
 })

@@ -9,7 +9,7 @@ import {Droppable, Draggable} from 'react-beautiful-dnd';
 
 const Board = ({board}) => {
   const dispatch = useDispatch();
-  const boards = useSelector(state => state.data.boards);
+  const boards = useSelector(state => state.boards);
   const [title, setTitle] = useState(board.title)
   const navigate = useNavigate();
 

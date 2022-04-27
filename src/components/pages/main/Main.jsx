@@ -10,7 +10,8 @@ import DraggableContainer from '../../UI/draggableContainer.jsx'
 
 const Main = () => {
   const dispatch = useDispatch();
-  const boards = useSelector(state => state.data)
+  const boards = useSelector(state => state)
+  console.log(boards)
 
   const onDragEnd = (result) => {
     const {destination, source, type} = result;

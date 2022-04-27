@@ -1,4 +1,4 @@
-const data = {
+const initialState = {
   boards: [
     {
       "id": "0175d1f0-a8c6-41bf-8d02-df5734d829a4",
@@ -19,23 +19,23 @@ const data = {
     },
     {
       "id": "0235d1f0-a8c6-41bf-8d02-123555xxxqqq",
-      "title": "Херня",
+      "title": "Прочее",
       "lists": [{
         "id": "0133d1f0-a8c6-41bf-8d99-df5734d81555",
-        "title": "На сегодня",
-        "tasks": [{"id": "0007","checked": false, "text": "Сходить за хлебом"},
-                  {"id": "0008","checked": false, "text": "Почитать книгу"},
-                  {"id": "0009","checked": true, "text": "Выпить чай"}]
+        "title": "Покупки",
+        "tasks": [{"id": "0007","checked": false, "text": "Купить новый торшер"},
+                  {"id": "0008","checked": false, "text": "Купить хлеба"},
+                  {"id": "0009","checked": true, "text": "Что-нибудь к чаю"}]
       },{
         "id": "0144d1f0-0011-3322-7788-df5734445666",
-        "title": "На завтра",
-        "tasks": [{"id": "0010","checked": false, "text": "Почесать кошку"},
-                  {"id": "0011","checked": false, "text": "Написать стих"},
-                  {"id": "0012","checked": false, "text": "Поймать рыбу"}]
+        "title": "Кулинария",
+        "tasks": [{"id": "0010","checked": false, "text": "Приготовить рыбу в кляре"},
+                  {"id": "0011","checked": false, "text": "Сделать салат из овощей"},
+                  {"id": "0012","checked": false, "text": "Пожарить картошку"}]
       }]
     }
   ],
   sort: "SORTED_BY_DATE"
 }
 
-export default data;
+export default initialState;
