@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import WideButton from "./wideButton/WideButton.jsx"
 import {useDispatch} from "react-redux";
 import {removeTask, updateTask} from '../reducers/boardsReducer.js'
-import AddInput from "./addInput/AddInput.jsx"
+import TaskTextarea from "./taskTextarea/TaskTextarea.jsx"
 import './task.less';
 
 const Task = ({title, id, checked}) => {
@@ -18,23 +18,27 @@ const Task = ({title, id, checked}) => {
   }
 
   return (
-    <div className="task">
+    <div className="task" style={checked ? {background: 'lightgrey'} : {background: 'white'}}>
+
       <button onClick={() => updateThisTask(!checked, taskText)}>
         <span className="material-icons">
           {checked ? 'check_circle' : 'radio_button_unchecked'}
         </span>
       </button>
 
-      <div style={{'display':'flex'}}>
-        <AddInput
-          value={taskText}
-          onChange={e => setTaskText(e.target.value)}
-          onBlur={e => updateThisTask(checked, e.target.value)}/>
+      <div className="flex-row">
+        <TaskTextarea
+        onChange={e => setTaskText(e.target.value)}
+        onBlur={e => updateThisTask(checked, e.target.value)}
+        >
+          {taskText}
+        </TaskTextarea>
       </div>
 
       <button onClick={removeThisTask}>
         <span className="material-icons">close</span>
       </button>
+
     </div>
   );
 }

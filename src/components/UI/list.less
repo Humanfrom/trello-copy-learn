@@ -1,21 +1,30 @@
-@base: #61824c;
-@basicValue: 15px;
-
 .list{
   padding: 15px;
   margin: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content: space-between;
   width: 325px;
   min-height: 350px;
   font-family: "Raleway";
   font-weight: 500;
   background-color: white;
 
-  .list-title {
+  .list-header {
+    display: flex;
+    height: 50px;
 
+    .drag-line {
+      margin: 10px;
+      color: lightgrey;
+      display: flex;
+      flex: 1;
+    }
+
+  }
+
+  .list-title {
     display: flex;
     justify-content: flex-start;
     color: black;
@@ -29,8 +38,8 @@
        width: 100%;
        bottom: 0;
        height: .125rem;
-       margin: 0 10px;
-       background: #fff;
+       margin: 10px;
+       background: #000;
        transform: scaleX(.2);
        transform-origin: left center;
        z-index: 0;
@@ -42,30 +51,31 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items: flex-start;
-}
+  }
 
-  h2 {
-    font-family: "Gotham Pro";
-    font-weight: 200;
-    font-size: 2.5em;
-    margin: 10px auto 20px 10px;
-    }
+  .list-title-input{
+    color: #000;
+  }
 
   .tasks {
-    color: #b3bcd3;
+    color: #000;
     font-family: "Gotham Pro";
     font-weight: 200;
     font-size: 1.5em;
-    margin: 10px auto 20px 10px;
     font-style: italic;
   }
 
-  li {
-  font-family: "Raleway";
-  font-weight: 400;
-  font-size: 1.5em;
-  color: #fff;
-  margin-bottom: 0.5em;
+  .list-buttons {
+    display: flex;
+    flex-direction: row;
+    border: 2px dotted lightgrey;
+    border-radius: 3px;
+    padding: 10px;
   }
 
+}
+
+.pattern-dots {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: calc(10 * 1px) calc(10 * 1px);
 }

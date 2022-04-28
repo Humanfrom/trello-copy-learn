@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import Task from "./Task";
 import {v4} from 'uuid';
 import {useDispatch, useSelector} from "react-redux";
-import WideButton from "./wideButton/WideButton.jsx"
-import AddInput from "./addInput/AddInput.jsx"
+import TaskTextarea from "./taskTextarea/TaskTextarea.jsx"
 import {addTask, removeList, updateList} from '../reducers/boardsReducer.js';
 import DroppableContainer from './dproppableContainer.jsx';
 import DraggableContainer from './draggableContainer.jsx';
@@ -32,8 +31,22 @@ const List = ({tasks, title, id}) => {
   return (
     <div className="list">
 
+      <div className='list-header'>
+        <div className='drag-line pattern-dots'></div>
+        <button style={{width:55}} onClick={() => removeThisList()}>
+          <span className="material-icons">close</span>
+        </button>
+      </div>
+
       <div className='list-title'>
-        <AddInput value={listTitle} onChange={e => setListTitle(e.target.value)} onBlur={updateThisList}/>
+
+        <TaskTextarea
+        className='input list-title-input'
+        onChange={e => setListTitle(e.target.value)}
+        onBlur={updateThisList}
+        >
+          {listTitle}
+        </TaskTextarea>
       </div>
 
 
@@ -48,17 +61,21 @@ const List = ({tasks, title, id}) => {
                     </DraggableContainer>
                   ))}
           </DroppableContainer>
-        
+
 
       <div className="list-buttons">
-        <AddInput type='text' placeholder="БЕЗ ИМЕНИ" value={taskTitle} onChange={e => setTaskTitle(e.target.value)} required/>
 
-        <WideButton style={{width:200}} onClick={() => addNewTask()}>Добавить</WideButton>
+        <button style={{display: 'flex'}} onClick={() => addNewTask()}>
+          <span className="material-icons">add_circle</span>
+        </button>
 
-        <WideButton style={{width:55}} onClick={() => removeThisList()}>
-          <span className="material-icons">close</span>
-        </WideButton>
+        <TaskTextarea
+        placeholder="БЕЗ ИМЕНИ"
+        onChange={e => setTaskTitle(e.target.value)}>
+          {taskTitle}
+        </TaskTextarea>
       </div>
+
     </div>
   );
 }

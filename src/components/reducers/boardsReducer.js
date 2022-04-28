@@ -2,7 +2,6 @@ import C from '../../constants';
 import {listsReducer} from './listsReducer.js';
 
 export function boardsReducer(state = [], action){
-  console.log(state)
   switch (action.type) {
     case C.ADD_BOARD:
       return [ ...state,
