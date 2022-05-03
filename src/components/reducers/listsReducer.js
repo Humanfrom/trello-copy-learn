@@ -46,7 +46,7 @@ export function listsReducer(state = {}, action){
               })
             case destination.droppableId:
               const destinationTasks = [...list.tasks];
-              const task = state.lists.map(e => e.tasks.filter(task => task.id === draggableId)).flat()[0];
+              const [task] = state.lists.map(e => e.tasks.filter(task => task.id === draggableId)).flat();
               destinationTasks.splice(destination.index, 0, task);
               return {...list, tasks: destinationTasks}
             default:

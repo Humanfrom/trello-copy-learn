@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {DragDropContext, Draggable} from 'react-beautiful-dnd'
 import {v4} from 'uuid'
@@ -10,7 +10,7 @@ import DroppableContainer from '../../UI/dproppableContainer.jsx'
 import DraggableContainer from '../../UI/draggableContainer.jsx'
 import './main.less'
 
-const Main = () => {
+const Main = ({count}) => {
   const dispatch = useDispatch();
   const boards = useSelector(state => state)
 
@@ -34,19 +34,25 @@ const Main = () => {
   return (
   <DragDropContext onDragEnd={onDragEnd}>
     <div className='boards-conatainer'>
-        <DroppableContainer
-          droppableId="all-boards"
-          direction='horizontal'
+      {[...Array(count)].map((line,i) =>
+          <DroppableContainer
+          key={`droppable-${i}`}
+          droppableId={`all-boards-${i}`}
+          direction='vertical'
           type="boards"
-          listClass="flex-row select-board"
+          listClass="flex-column select-board"
           >
+              {!i ? <AddItem addNewItem={addNewBoard}/> : null}
               {boards.map((item, index) => (
-                  <DraggableContainer key={'drag-' + item.id} draggableId={item.id} index={index}>
+                (index + 1 - i) % count === 0
+                ? <DraggableContainer key={'drag-' + item.id} draggableId={item.id} index={index}>
                         <Board key={item.id} board={item}/>
                   </DraggableContainer>
+                : null
                 ))}
-                <AddItem addNewItem={addNewBoard}/>
-        </DroppableContainer>
+
+        </DroppableContainer>)
+      }
     </div>
   </DragDropContext>
 )

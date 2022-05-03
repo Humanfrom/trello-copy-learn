@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {DragDropContext} from 'react-beautiful-dnd'
@@ -12,7 +12,7 @@ import DraggableContainer from '../../UI/draggableContainer.jsx'
 import './currentboard.less'
 
 
-const CurrentBoard = (props) => {
+const CurrentBoard = ({count}) => {
   const dispatch = useDispatch();
   const {id} = useParams();
 
@@ -52,24 +52,32 @@ const CurrentBoard = (props) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className='board-content'>
+
         <div className='board-header'>
           <h1>{currentBoard.title.toUpperCase()}</h1>
         </div>
-        <div>
+
+        <div className='boards-conatainer'>
+          {[...Array(count)].map((l,i) =>
             <DroppableContainer
-              droppableId="all-lists"
+              key={`droppableList-${i}`}
+              droppableId={`all-lists-${i}`}
               direction='horizontal'
               type="lists"
-              listClass='flex-row select-list'
+              listClass='flex-column select-list'
               >
+                  {!i ? <AddItem addNewItem={addNewList}/> : null}
                   {currentBoard.lists.map((item, index) => (
-                    <DraggableContainer key={'drag-' + item.id} draggableId={item.id} index={index}>
-                        <List key={item.id} title={item.title} tasks={item.tasks} id={item.id}/>
-                        </DraggableContainer>
-                      ))}
-                  <AddItem addNewItem={addNewList} />
-              </DroppableContainer>
+                    (index + 1 - i) % count === 0
+                    ? <DraggableContainer key={'drag-' + item.id} draggableId={item.id} index={index}>
+                        <List key={item.id} list={item} />
+                      </DraggableContainer>
+                    : null
+                    ))}
+              </DroppableContainer>)
+              }
         </div>
+
       </div>
     </DragDropContext>
   );

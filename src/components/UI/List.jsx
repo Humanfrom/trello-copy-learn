@@ -8,23 +8,23 @@ import DroppableContainer from './dproppableContainer.jsx';
 import DraggableContainer from './draggableContainer.jsx';
 import './list.less';
 
-const List = ({tasks, title, id}) => {
+const List = ({list}) => {
 
   const dispatch = useDispatch();
   const [taskTitle,setTaskTitle] = useState('');
-  const [listTitle,setListTitle] = useState(title);
+  const [listTitle,setListTitle] = useState(list.title);
 
   function addNewTask(){
-    dispatch(addTask({"id": v4(),"checked": false, "text": taskTitle},id));
+    dispatch(addTask({"id": v4(),"checked": false, "text": taskTitle},list.id));
     setTaskTitle('');
   }
 
   function removeThisList(){
-    dispatch(removeList(id))
+    dispatch(removeList(list.id))
   }
 
   function updateThisList(){
-    dispatch(updateList(listTitle, id))
+    dispatch(updateList(listTitle, list.id))
   }
 
 
@@ -51,11 +51,11 @@ const List = ({tasks, title, id}) => {
 
 
           <DroppableContainer
-            droppableId={id}
+            droppableId={list.id}
             type="tasks"
             listClass='flex-column'
             >
-                {tasks.map((task, index) => (
+                {list.tasks.map((task, index) => (
                     <DraggableContainer key={'drag-' + task.id} draggableId={task.id} index={index}>
                           <Task key={task.id} id={task.id} title={task.text} checked={task.checked}/>
                     </DraggableContainer>
