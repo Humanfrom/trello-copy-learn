@@ -5,7 +5,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Main from "./components/pages/main/Main.jsx";
 import CurrentBoard from "./components/pages/currentboard/CurrentBoard.jsx";
 import Navbar from './components/UI/navbar/Navbar.jsx'
-import Error from './components/pages/Error.jsx'
+import Error from './components/pages/error/Error.jsx'
 import {updateRowCount} from './utils'
 
 const App = () => {

@@ -4,10 +4,10 @@ import {DragDropContext, Draggable} from 'react-beautiful-dnd'
 import {v4} from 'uuid'
 
 import Board from "../../UI/board/Board.jsx"
-import AddItem from "../../UI/AddItem.jsx"
+import AddItem from "../../UI/addItem/AddItem.jsx"
 import {addBoard, moveBoard} from '../../reducers/boardsReducer.js'
-import DroppableContainer from '../../UI/dproppableContainer.jsx'
-import DraggableContainer from '../../UI/draggableContainer.jsx'
+import DroppableContainer from '../../dproppableContainer.jsx'
+import DraggableContainer from '../../draggableContainer.jsx'
 import './main.less'
 
 const Main = ({count}) => {

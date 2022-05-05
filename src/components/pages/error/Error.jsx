@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import WideButton from "../UI/wideButton/WideButton.jsx"
+import WideButton from "../../UI/wideButton/WideButton.jsx"
 import './error.less';
 
 const Error = () => {

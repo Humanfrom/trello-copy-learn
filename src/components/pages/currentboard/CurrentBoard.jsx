@@ -4,11 +4,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {DragDropContext} from 'react-beautiful-dnd'
 import {v4} from 'uuid'
 
-import List from "../../UI/List.jsx";
-import AddItem from "../../UI/AddItem.jsx";
+import List from "../../List.jsx";
+import AddItem from "../../UI/addItem/AddItem.jsx";
 import {moveList, moveTask, addList} from './../../reducers/boardsReducer.js'
-import DroppableContainer from '../../UI/dproppableContainer.jsx'
-import DraggableContainer from '../../UI/draggableContainer.jsx'
+import DroppableContainer from '../../dproppableContainer.jsx'
+import DraggableContainer from '../../draggableContainer.jsx'
 import './currentboard.less'
 
 
@@ -62,7 +62,7 @@ const CurrentBoard = ({count}) => {
             <DroppableContainer
               key={`droppableList-${i}`}
               droppableId={`all-lists-${i}`}
-              direction='horizontal'
+              direction='vertical'
               type="lists"
               listClass='flex-column select-list'
               >

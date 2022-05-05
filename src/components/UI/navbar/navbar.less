@@ -9,8 +9,18 @@
   .navbar-title{
     display: flex;
     justify-content: center;
+    height: 175px;
     flex: 1;
 
+    img {
+      width: 569px;
+
+      @media screen and (max-width: 750px) {
+        width: 300px;
+        height: 92px;
+        margin: auto;
+      }
+    }
 
     h1 {
       font-family: "Gotham Pro";
@@ -20,7 +30,7 @@
   }
 
   .navbar-buttons {
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: column;
 

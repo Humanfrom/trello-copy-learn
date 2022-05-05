@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {addBoard} from '../reducers/boardsReducer.js'
-import RoundAddButton from './roundAddButton/RoundAddButton.jsx'
-import AddInput from './addInput/AddInput.jsx';
+import {addBoard} from '../../reducers/boardsReducer.js'
+import RoundAddButton from '../roundAddButton/RoundAddButton.jsx'
+import AddInput from '../addInput/AddInput.jsx';
 import './additem.less'
 
 const AddItem = ({addNewItem}) => {

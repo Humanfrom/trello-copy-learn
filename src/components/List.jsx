@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import Task from "./Task";
 import {v4} from 'uuid';
 import {useDispatch, useSelector} from "react-redux";
-import TaskTextarea from "./taskTextarea/TaskTextarea.jsx"
-import {addTask, removeList, updateList} from '../reducers/boardsReducer.js';
+import TaskTextarea from "./UI/taskTextarea/TaskTextarea.jsx"
+import {addTask, removeList, updateList} from './reducers/boardsReducer.js';
 import DroppableContainer from './dproppableContainer.jsx';
 import DraggableContainer from './draggableContainer.jsx';
 import './list.less';

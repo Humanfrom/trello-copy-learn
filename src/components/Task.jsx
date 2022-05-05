@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import WideButton from "./wideButton/WideButton.jsx"
+import WideButton from "./UI/wideButton/WideButton.jsx"
 import {useDispatch} from "react-redux";
-import {removeTask, updateTask} from '../reducers/boardsReducer.js'
-import TaskTextarea from "./taskTextarea/TaskTextarea.jsx"
+import {removeTask, updateTask} from './reducers/boardsReducer.js'
+import TaskTextarea from "./UI/taskTextarea/TaskTextarea.jsx"
 import './task.less';
 
 const Task = ({title, id, checked}) => {
