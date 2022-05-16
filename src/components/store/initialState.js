@@ -34,8 +34,7 @@ const initialState = {
                   {"id": "0012","checked": false, "text": "Пожарить картошку"}]
       }]
     }
-  ],
-  sort: "SORTED_BY_DATE"
+  ]
 }
 
 export default initialState;
