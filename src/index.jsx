@@ -5,6 +5,7 @@ import App from './App.jsx'
 import {Provider} from "react-redux"
 import {newStore} from './components/store/index.js'
 
+//создаём новое хранилище с возможностью чтения и записи в localStorage
 const store = newStore();
 
 ReactDOM.render(

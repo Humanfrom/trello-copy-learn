@@ -12,6 +12,7 @@ const App = () => {
   const dispatch = useDispatch()
   const [rowCount, setRowCount] = useState(4)
 
+  //добавляем слушатель изменения ширины окна для корректировки количества колонок (изменения количества элементов в строке)
   useEffect(() => {
     updateRowCount(setRowCount)
     window.addEventListener(`resize`, () => {updateRowCount(setRowCount)}, false);

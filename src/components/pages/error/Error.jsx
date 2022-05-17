@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import WideButton from "../../UI/wideButton/WideButton.jsx"
 import './error.less';
 
+//страница демонтрируемая в случае ошибки
 const Error = () => {
 const navigate = useNavigate();
 

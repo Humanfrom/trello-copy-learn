@@ -1,6 +1,7 @@
 import React from 'react';
 import './RoundAddButton.less'
 
+//кастомная кнопка, добавляющая новый список или доску
 const RoundAddButton = ({children, ...props}) => {
   return (
     <div className='round-add over around '>

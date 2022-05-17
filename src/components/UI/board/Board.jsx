@@ -1,33 +1,35 @@
 import React, {useEffect, useState} from 'react';
 import './board.less'
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {removeBoard, updateBoard} from '../../reducers/boardsReducer.js'
 import WideButton from "../wideButton/WideButton.jsx"
 import { useNavigate } from 'react-router-dom';
 import AddInput from "../addInput/AddInput.jsx";
 import {Droppable, Draggable} from 'react-beautiful-dnd';
 
+//получаем через пропсы объект конкретной доски
 const Board = ({board}) => {
+
   const dispatch = useDispatch();
-  const boards = useSelector(state => state.boards);
   const [title, setTitle] = useState(board.title)
   const navigate = useNavigate();
 
+  //удаляем доску по ID
   function removeThisBoard(id){
     dispatch(removeBoard(id))
   }
 
+  //переходим на страницу изменения выбранной доски
   function selectBoard(id){
     navigate("/board/"+ id, { replace: true });
   }
 
+  //обновляем название доски
   function updateThisBoard(){
     dispatch(updateBoard(title,board.id))
   }
 
   return (
-
-
       <div className="board">
 
         <div className='board-title'>

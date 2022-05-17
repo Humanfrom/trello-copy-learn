@@ -4,21 +4,25 @@ import mainLogo from "../../../img/logo.png";
 import WideButton from "../wideButton/WideButton.jsx"
 import './navbar.less'
 
-
+//панель навигации
 const Navbar = () => {
   const navigate = useNavigate();
   const params = useParams();
 
   return (
     <div className='navbar'>
+
       <div className='navbar-buttons'>
+
         <WideButton onClick={() => navigate('/')}>
           <span className="material-icons">assignment_return</span>
         </WideButton>
-        <WideButton onClick={() => document.location.replace('https://github.com/Humanfrom')}>
+
+        <WideButton onClick={() => document.location.replace('https://github.com/Humanfrom/trello-copy-learn')}>
           <span className="material-icons">help</span>
         </WideButton>
       </div>
+
       <div className='navbar-title'>
         <button onClick={() => navigate('/')}>
           <img src={mainLogo} />

@@ -9,16 +9,20 @@ const Task = ({title, id, checked}) => {
   const [taskText, setTaskText] = useState(title)
   const dispatch = useDispatch();
 
+  //удаляем таск по ID из пропсов
   function removeThisTask(){
     dispatch(removeTask(id))
   }
 
+  //обновляем таск путём отправки полностью нового объекта таска с новыми полями
   function updateThisTask(state,text){
     dispatch(updateTask({"id": id,"checked": state, "text": text}))
   }
 
+  //таск состоит из 3-ех элементов: кнопка выполнения таска, тело таска (расширяемый тексареа) и кнопка удаления таска
   return (
     <div className="task" style={checked ? {background: 'lightgrey'} : {background: 'white'}}>
+
 
       <button onClick={() => updateThisTask(!checked, taskText)}>
         <span className="material-icons">

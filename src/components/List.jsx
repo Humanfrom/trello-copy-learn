@@ -11,23 +11,27 @@ import './list.less';
 const List = ({list}) => {
 
   const dispatch = useDispatch();
-  const [taskTitle,setTaskTitle] = useState('');
-  const [listTitle,setListTitle] = useState(list.title);
+  const [taskTitle,setTaskTitle] = useState(''); //поле для создания нового таска
+  const [listTitle,setListTitle] = useState(list.title); //изменяемое название списка
 
+  //добавляем новый таск - готовая структура таска
   function addNewTask(){
     dispatch(addTask({"id": v4(),"checked": false, "text": taskTitle},list.id));
     setTaskTitle('');
   }
 
+  //удаляем список по ID из пропсов
   function removeThisList(){
     dispatch(removeList(list.id))
   }
 
+  //обновляем название списка по стейту (используем ID из пропсов)
   function updateThisList(){
     dispatch(updateList(listTitle, list.id))
   }
 
-
+  //список состоит из: области для перетаскивания + кнопка закрытия, изменяемого названия,
+  //сиска тасков, блока для добавления нового таска (текстареа + кнопка добавления)
   return (
     <div className="list">
 
@@ -39,7 +43,6 @@ const List = ({list}) => {
       </div>
 
       <div className='list-title'>
-
         <TaskTextarea
         className='input list-title-input'
         onChange={e => setListTitle(e.target.value)}
@@ -49,19 +52,19 @@ const List = ({list}) => {
         </TaskTextarea>
       </div>
 
-
           <DroppableContainer
             droppableId={list.id}
             type="tasks"
             listClass='flex-column'
             >
                 {list.tasks.map((task, index) => (
+
                     <DraggableContainer key={'drag-' + task.id} draggableId={task.id} index={index}>
                           <Task key={task.id} id={task.id} title={task.text} checked={task.checked}/>
                     </DraggableContainer>
+
                   ))}
           </DroppableContainer>
-
 
       <div className="list-buttons">
 
