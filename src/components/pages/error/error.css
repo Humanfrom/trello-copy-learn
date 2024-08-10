@@ -1,12 +1,10 @@
-.error-info{
+.error-info {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
-  h1 {
-    font-family: "Roboto";
-    font-weight: 400;
-  }
-
+}
+.error-info h1 {
+  font-family: "Roboto";
+  font-weight: 400;
 }

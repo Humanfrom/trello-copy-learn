@@ -3,22 +3,19 @@
   justify-content: flex-start;
   flex-wrap: wrap;
 }
-
 .board-header {
   display: flex;
   flex: 1;
   justify-content: center;
   margin-bottom: 10px;
-
-  h1 {
-    color: #fff;
-    font-family: 'Roboto',sans-serif;
-    font-weight: 400;
-    padding: 10px 20px;
-    border: 2px solid;
-  }
 }
-
+.board-header h1 {
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  padding: 10px 20px;
+  border: 2px solid;
+}
 .lists-conatainer {
   display: flex;
   justify-content: flex-start;

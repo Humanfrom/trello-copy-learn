@@ -1,0 +1,70 @@
+.list {
+  padding: 15px;
+  margin: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 325px;
+  min-height: 350px;
+  font-family: "Roboto";
+  font-weight: 500;
+  background-color: white;
+}
+.list .list-header {
+  display: flex;
+  height: 50px;
+}
+.list .list-header .drag-line {
+  margin: 10px;
+  color: lightgrey;
+  display: flex;
+  flex: 1;
+}
+.list .list-title {
+  display: flex;
+  justify-content: flex-start;
+  color: black;
+  position: relative;
+}
+.list .list-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 0.125rem;
+  margin: 10px;
+  background: #000;
+  transform: scaleX(0.2);
+  transform-origin: left center;
+  z-index: 0;
+  transition: 0.6s cubic-bezier(0.6, 0.01, 0, 1);
+}
+.list .list-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.list .list-title-input {
+  color: #000;
+}
+.list .tasks {
+  color: #000;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 1.5em;
+  font-style: italic;
+}
+.list .list-buttons {
+  display: flex;
+  flex-direction: row;
+  border: 2px dotted lightgrey;
+  border-radius: 3px;
+  padding: 10px;
+}
+.pattern-dots {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: calc(10 * 1px) calc(10 * 1px);
+}
